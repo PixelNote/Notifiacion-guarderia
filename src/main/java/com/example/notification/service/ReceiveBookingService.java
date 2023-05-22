@@ -1,5 +1,6 @@
 package com.example.notification.service;
 
+import com.example.notification.model.Email;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -38,24 +39,7 @@ public class ReceiveBookingService {
 
         helper.setTo(notification.getEmail());
         helper.setSubject("Mascota lista para ser recogida");
-        helper.setText("<html>" +
-                "<head>" +
-                "<style>" +
-                "body { font-family: Arial, sans-serif; }" +
-                "h1 { text-align: center; }" +
-                "p { text-align: left; }" +
-                "</style>" +
-                "</head>" +
-                "<body>" +
-                "<h1>¡Tu mascota está lista para ser recogida!</h1>" +
-                "<p>Hola "+notification.getClient()+" ,</p>" +
-                "<p>Tu mascota <strong>" + notification.getPet() + "</strong> ya está disponible para ser recogida en nuestra guardería canina.</p>" +
-                "<p>Por favor, ven a recogerla en el horario de atención establecido.</p>" +
-                "<p>Fecha: "+notification.getDate()+", "+notification.getTime()+" </p>" +
-                "<p>Gracias y esperamos verte pronto.</p>" +
-                "<p>Equipo de la Guardería Canina</p>" +
-                "</body>" +
-                "</html>", true);
+        helper.setText(new Email(notification.getClient(), notification.getPet(), notification.getDate(),notification.getTime()).getContent(), true);
 
         try{
             sender.send(message);
