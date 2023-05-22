@@ -57,7 +57,7 @@ public class Email {
                 "    <div class=\"container\">\n" +
                 "        <h1>¡Tu mascota está lista para ser recogida!</h1>\n" +
                 "        \n" +
-                "        <p>Estimado(a)"+ client +",</p>\n" +
+                "        <p>Estimado(a) "+ client +",</p>\n" +
                 "        \n" +
                 "        <p>Nos complace informarte que tu querida mascota <b>"+pet+" </b> está lista para ser recogida en nuestro centro de adopción.</p>\n" +
                 "        \n" +
