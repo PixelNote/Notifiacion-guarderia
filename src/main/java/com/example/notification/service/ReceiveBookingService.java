@@ -31,7 +31,7 @@ public class ReceiveBookingService {
         return new Jackson2JsonMessageConverter();
     }
 
-    @RabbitListener(queues = {"notificacionQueue"})
+    @RabbitListener(queues = {"notificationQueue"})
     public void sendMessage(NotificationDTO notification) throws MessagingException {
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -51,7 +51,7 @@ public class ReceiveBookingService {
                 "<p>Hola "+notification.getClient()+" ,</p>" +
                 "<p>Tu mascota <strong>" + notification.getPet() + "</strong> ya está disponible para ser recogida en nuestra guardería canina.</p>" +
                 "<p>Por favor, ven a recogerla en el horario de atención establecido.</p>" +
-                "<p>Horario: "+notification.getDate()+", "+notification.getTime()+" </p>" +
+                "<p>Fecha: "+notification.getDate()+", "+notification.getTime()+" </p>" +
                 "<p>Gracias y esperamos verte pronto.</p>" +
                 "<p>Equipo de la Guardería Canina</p>" +
                 "</body>" +
