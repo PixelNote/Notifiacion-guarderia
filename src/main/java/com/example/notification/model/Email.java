@@ -29,6 +29,6 @@ public class Email {
                 "¡Esperamos verte pronto!\n" +
                 "\n" +
                 "Atentamente,\n" +
-                "Bebitos Felices\n";;;
+                "Bebitos Felices\n";
     }
 }
